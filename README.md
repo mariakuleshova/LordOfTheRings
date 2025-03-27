@@ -1,1 +1,1 @@
-# -LordOfTheRings
+# LordOfTheRings
