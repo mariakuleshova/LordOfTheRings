@@ -49,8 +49,8 @@ public class View extends javax.swing.JFrame {
         agilityLabel = new javax.swing.JLabel();
         intellectLabel = new javax.swing.JLabel();
         healthLabel = new javax.swing.JLabel();
-        textNameLabel = new javax.swing.JLabel();
-        textTribeLabel = new javax.swing.JLabel();
+        nameTextLabel = new javax.swing.JLabel();
+        tribeTextLabel = new javax.swing.JLabel();
         tribeLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         weaponTextLabel = new javax.swing.JLabel();
@@ -146,19 +146,19 @@ public class View extends javax.swing.JFrame {
         gridBagConstraints.ipady = 10;
         rightPanel.add(healthLabel, gridBagConstraints);
 
-        textNameLabel.setText("Name");
+        nameTextLabel.setText("Name");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 10;
         gridBagConstraints.ipady = 10;
-        rightPanel.add(textNameLabel, gridBagConstraints);
+        rightPanel.add(nameTextLabel, gridBagConstraints);
 
-        textTribeLabel.setText("Tribe");
+        tribeTextLabel.setText("Tribe");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 10;
         gridBagConstraints.ipady = 10;
-        rightPanel.add(textTribeLabel, gridBagConstraints);
+        rightPanel.add(tribeTextLabel, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -279,12 +279,12 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JScrollPane leftScrollPane;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel nameTextLabel;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JLabel strehgthLabel;
     private javax.swing.JProgressBar strengthBar;
-    private javax.swing.JLabel textNameLabel;
-    private javax.swing.JLabel textTribeLabel;
     private javax.swing.JLabel tribeLabel;
+    private javax.swing.JLabel tribeTextLabel;
     private javax.swing.JLabel weaponLabel;
     private javax.swing.JLabel weaponTextLabel;
     // End of variables declaration//GEN-END:variables

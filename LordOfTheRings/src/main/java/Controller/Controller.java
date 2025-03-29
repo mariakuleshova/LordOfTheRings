@@ -17,26 +17,27 @@ import java.util.Map;
 public class Controller {
     private final List<Ork> army = new ArrayList<>();
     private final OrkDirector director = new OrkDirector();
-    private final Map<String, OrkBuilderFactory> factories = new HashMap<>();
+    private final Map<String, OrkBuilderFactory> builderFactories = new HashMap<>();
 
     public Controller() {
-        factories.put("Мордор", new MordorOrkBuilderFactory());
-        factories.put("Дол Гулдур", new DolGuldurOrkBuilderFactory());
-        factories.put("Мглистые Горы", new MistyMountainsOrkBuilderFactory());
+        builderFactories.put("Мордор", new MordorOrkBuilderFactory());
+        builderFactories.put("Дол Гулдур", new DolGuldurOrkBuilderFactory());
+        builderFactories.put("Мглистые Горы", new MistyMountainsOrkBuilderFactory());
     }
 
     public void createOrk(String tribe, String role) {
-        OrkBuilder builder = factories.get(tribe).createBuilder();
-        Ork ork = switch(role.toUpperCase()) {
-            case "КОМАНДИР", "LEADER" -> director.createLeaderOrk(builder);
-            case "РАЗВЕДЧИК", "SCOUT" -> director.createScoutOrk(builder);
-            default -> director.createBasicOrk(builder);
+        director.setBuilder(builderFactories.get(tribe).createBuilder());
+        Ork ork = switch (role.toUpperCase()) {
+            case "LEADER", "КОМАНДИР" -> director.createLeaderOrk();
+            case "SCOUT", "РАЗВЕДЧИК" -> director.createScoutOrk();
+            default -> director.createBasicOrk();
         };
-        army.add(ork);  
+
+        army.add(ork);
     }
     
     public String[] getAvailableTribes() {
-        return factories.keySet().toArray(new String[0]);
+        return builderFactories.keySet().toArray(new String[0]);
     }
 
 //    Получение структуры армии для заполнения дерева в View

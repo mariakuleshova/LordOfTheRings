@@ -9,15 +9,21 @@ package Model;
  * @author maria
  */
 public class OrkDirector {
-    public Ork createBasicOrk(OrkBuilder builder) {
+    private OrkBuilder builder;
+
+    public void setBuilder(OrkBuilder builder) {
+        this.builder = builder;
+    }
+    
+    public Ork createBasicOrk() {
         return builder.withRole("BASIC").build();
     }
     
-    public Ork createLeaderOrk(OrkBuilder builder) {
+    public Ork createLeaderOrk() {
         return builder.withRole("LEADER").build();
     }
     
-    public Ork createScoutOrk(OrkBuilder builder) {
+    public Ork createScoutOrk() {
         return builder.withRole("SCOUT").build();
     }
 }

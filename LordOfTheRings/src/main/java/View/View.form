@@ -193,7 +193,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="textNameLabel">
+                <Component class="javax.swing.JLabel" name="nameTextLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Name"/>
                   </Properties>
@@ -203,7 +203,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="textTribeLabel">
+                <Component class="javax.swing.JLabel" name="tribeTextLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tribe"/>
                   </Properties>
