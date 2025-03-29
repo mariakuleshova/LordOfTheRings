@@ -6,7 +6,6 @@ package Controller;
 
 import Model.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,60 +28,52 @@ public class Controller {
     public void createOrk(String tribe, String role) {
         OrkBuilder builder = factories.get(tribe).createBuilder();
         Ork ork = switch(role.toUpperCase()) {
-            case "LEADER" -> director.createLeaderOrk(builder);
-            case "SCOUT" -> director.createScoutOrk(builder);
+            case "КОМАНДИР", "LEADER" -> director.createLeaderOrk(builder);
+            case "РАЗВЕДЧИК", "SCOUT" -> director.createScoutOrk(builder);
             default -> director.createBasicOrk(builder);
         };
-        army.add(ork);
-    }
-
-    public List<Ork> getArmy() {
-        return new ArrayList<>(army);
+        army.add(ork);  
     }
     
     public String[] getAvailableTribes() {
-//        return new String[]{"Мордор", "Дол Гулдур", "Мглистые Горы"};
         return factories.keySet().toArray(new String[0]);
     }
 
+//    Получение структуры армии для заполнения дерева в View
     public Map<String, List<String>> getArmyStructure() {
         Map<String, List<String>> structure = new HashMap<>();
-        army.forEach(ork -> {
-            structure.computeIfAbsent(ork.getTribe(), k -> new ArrayList<>())
-                    .add(ork.getName());
-        });
+        for (Ork ork : army) {
+            String tribe = ork.getTribe();
+            if (!structure.containsKey(tribe)) {
+                structure.put(tribe, new ArrayList<>());
+            }
+            structure.get(tribe).add(ork.getName());
+        }
         return structure;
     }
 
-    
-     public Map<String, Object> getOrkInfo(String orkName) {
-        Ork ork = army.stream()
-                .filter(o -> o.getName().equals(orkName))
-                .findFirst()
-                .orElse(null);
-
-        if (ork == null) {
-            return Collections.emptyMap();
+//    Получение информации об орке для заполнения labels в View
+    public Map<String, Object> getOrkInfo(String orkName) {
+        Ork foundOrk = null;
+        for (Ork ork : army) {
+            if (ork.getName().equals(orkName)) {
+                foundOrk = ork;
+                break;
+            }
         }
 
         Map<String, Object> info = new HashMap<>();
-        info.put("name", ork.getName());
-        info.put("tribe", ork.getTribe());
-        info.put("weapon", ork.getWeapon());
-        info.put("armor", ork.getArmor());
-        info.put("banner", ork.getBanner());
-        info.put("strength", ork.getStrength());
-        info.put("agility", ork.getAgility());
-        info.put("intellect", ork.getIntellect());
-        info.put("health", ork.getHealth());
-        
+        if (foundOrk != null) {
+            info.put("name", foundOrk.getName());
+            info.put("tribe", foundOrk.getTribe());
+            info.put("weapon", foundOrk.getWeapon());
+            info.put("armor", foundOrk.getArmor());
+            info.put("banner", foundOrk.getBanner());
+            info.put("strength", foundOrk.getStrength());
+            info.put("agility", foundOrk.getAgility());
+            info.put("intellect", foundOrk.getIntellect());
+            info.put("health", foundOrk.getHealth());
+        }
         return info;
     }
-//    
-//     public Ork getOrkByName(String name) {
-//        return army.stream()
-//                .filter(ork -> ork.getName().equals(name))
-//                .findFirst()
-//                .orElse(null);
-//    }
 }

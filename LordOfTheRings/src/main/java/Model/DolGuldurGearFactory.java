@@ -9,14 +9,26 @@ package Model;
  * @author maria
  */
 public class DolGuldurGearFactory  implements OrkGearFactory {
-    @Override public String createWeapon() { 
-        return "Копье"; }
-    @Override public String createArmor() { 
-        return "Кольчуга"; }
-    @Override public String createBanner() { 
-        return "Паук"; }
-    @Override public String getTribe() { 
-        return "Дол Гулдур"; }
+    
+    @Override 
+    public String createWeapon() { 
+        return "Копье"; 
+    }
+    
+    @Override 
+    public String createArmor() { 
+        return "Кольчуга"; 
+    }
+    
+    @Override 
+    public String createBanner() { 
+        return "Паук"; 
+    }
+    
+    @Override 
+    public String getTribe() { 
+        return "Дол Гулдур"; 
+    }
 
     @Override
     public void applyAttributes(Ork ork) {

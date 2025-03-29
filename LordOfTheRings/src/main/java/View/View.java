@@ -26,11 +26,7 @@ public class View extends javax.swing.JFrame {
     public View() {
         initComponents();
         setTitle("Армия Саурона");
-        setContentPane(mainPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        pack();
-//        setSize(800, 600);
-//        armyTree.addTreeSelectionListener(e -> updateInfoPanel());
     }
 
     @SuppressWarnings("unchecked")
@@ -259,14 +255,12 @@ public class View extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new View().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSplitPane JSplitPane;
     private javax.swing.JProgressBar agilityBar;
@@ -295,6 +289,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel weaponTextLabel;
     // End of variables declaration//GEN-END:variables
  
+//    Окно для создания нового орка
     private void showCreationDialog() {
         String[] tribes = controller.getAvailableTribes();
         String[] roles = {"Базовый", "Командир", "Разведчик"};
@@ -315,12 +310,14 @@ public class View extends javax.swing.JFrame {
         }
     }
 
+//    Обновление дерева
     private void updateTree() {
         DefaultTreeModel model = new DefaultTreeModel(buildTree());
         armyTree.setModel(model);
         expandAllNodes();
     }
 
+//    Создание кастомного дерева
     private DefaultMutableTreeNode buildTree() {
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("Армия Мордора");
         Map<String, List<String>> armyStructure = controller.getArmyStructure();
@@ -341,6 +338,7 @@ public class View extends javax.swing.JFrame {
         }
     }
 
+//    Обновление информации при выборе орка
    private void updateInfoPanel() {
     TreePath path = armyTree.getSelectionPath();
     if (path != null) {

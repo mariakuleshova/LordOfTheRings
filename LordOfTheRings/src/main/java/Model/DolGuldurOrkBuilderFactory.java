@@ -9,7 +9,9 @@ package Model;
  * @author maria
  */
 public class DolGuldurOrkBuilderFactory implements OrkBuilderFactory {
-    @Override public OrkBuilder createBuilder() {
+    
+    @Override 
+    public OrkBuilder createBuilder() {
         return new OrkBuilder(new DolGuldurGearFactory());
     }
 }

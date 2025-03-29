@@ -19,6 +19,7 @@ public class Ork {
     private int intellect;
     private int health;
     
+//    Геттеры и сеттеры для всех полей
     public String getName() {
         return name;
     }
